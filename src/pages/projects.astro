@@ -1,0 +1,65 @@
+---
+import ProjectsGrid from "@components/ProjectsGrid.astro";
+import Layout from "@layout/Layout.astro";
+
+const projects = [
+  {
+    name: "Northline Express",
+    description:
+      "One of 8 sites I rebuilt and helped migrate from Magento 1 to Big Commerce for Online stores.",
+    link: "https://www.northlineexpress.com/",
+  },
+  {
+    name: "Tiger-Hunt",
+    description:
+      "A conversion of a static HTML site to a fully functional WordPress site. It was an interesting project as the majority of customers are self-admittedly 'not tech savvy'.",
+    link: "https://gunstockwood.com/",
+  },
+  {
+    name: "Amazon Alexa",
+    description:
+      "I assisted on a series of projects for Voice Focused, a company that focused on disrupting the voice assistant market.",
+    link: "https://vimeo.com/309762069?embedded=true&source=vimeo_logo&owner=93600914",
+  },
+  {
+    name: "Magic 8 Ball",
+    description:
+      "One of the fist things I ever built that wasn't a static site. I built this as a way to learn how to use JavaScript.",
+    link: "https://codepen.io/JaredsPens/pen/pLqqaY",
+  },
+  {
+    name: "My Minis Site",
+    description:
+      "In progress. A collection of miniatures that I've painted over the past year.",
+    link: "",
+  },
+  {
+    name: "Super Secret Mystery Project",
+    description:
+      "It's such a well kept secret that I don't even know what it is.",
+    link: "",
+  },
+];
+---
+
+<Layout
+  pageTitle="Projects"
+  description="A collection of projects I've worked on over the years."
+  type="content"
+>
+  <main class="px-8 pt-16 mx-auto max-w-6xl sm:pt-24 lg:px-16">
+    <div class="flex flex-col mt-4 space-y-8">
+      <div class="flex flex-col space-y-4">
+        <h1
+          class="text-4xl font-bold tracking-tighter sm:text-5xl max-w-[25ch]"
+        >
+          Jared Made These
+        </h1>
+        <p class="text-primary-300 max-w-[65ch]">
+        So many projects, so little time. Here are some of the projects I've worked on over the years:
+        </p>
+      </div>
+      <ProjectsGrid projects={projects} />
+    </div>
+  </main>
+</Layout>

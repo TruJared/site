@@ -1,0 +1,75 @@
+---
+const routes = ["Home", "About", "Blog", "Projects"];
+---
+
+<!-- set width and max-w, -4rem from body, probably should refactor -->
+<div
+  class="w-[calc(100%-4px)] sm:w-[calc(100%-4px-4rem)] fixed backdrop-blur-[8px] top-0 py-2 z-50"
+  id="navbar-container"
+>
+  <nav class="px-1 mx-auto max-w-sm rounded-3xl z-100">
+    <ul class="flex flex-row justify-center items-center">
+      {
+        routes.map((route) => (
+          <li>
+            <a
+              rel="prefetch"
+              class="block py-2 px-3 font-semibold tracking-tighter transition hover:text-accent-400 active:text-accent-400"
+              href={route === "Home" ? "/" : `/${route.toLowerCase()}`}
+            >
+              {route}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<style>
+  #navbar-container {
+    left: 50%;
+    transform: translateX(-50%);
+    transition: top 0.3s linear;
+    max-width: calc(72rem - 2px);
+  }
+</style>
+
+<script>
+  let prevScrollPos = window.pageYOffset;
+
+  let navbar = document.getElementById("navbar-container");
+
+  // hide on scroll down, show on scroll up
+  window.onscroll = () => {
+    let currentScrollPos = window.pageYOffset;
+
+    console.table([{ previous: prevScrollPos, current: currentScrollPos }]);
+
+    if (!navbar) {
+      return;
+    }
+
+    if (currentScrollPos < 50) {
+      navbar.style.top = "0";
+      return;
+    }
+
+    if (prevScrollPos > currentScrollPos) {
+      navbar.style.top = "0";
+    } else {
+      navbar.style.top = "-5rem";
+    }
+
+    prevScrollPos = currentScrollPos;
+  };
+
+  // set active on current page
+  const links = document.querySelectorAll("li>a");
+  for (const link of links) {
+    // @ts-ignore
+    if (link.href === `${window.location.origin}${window.location.pathname}`) {
+      link.classList.add("text-accent-400");
+    }
+  }
+</script>

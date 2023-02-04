@@ -1,0 +1,82 @@
+---
+const jobs = [
+  {
+    title: "Web Developer",
+    company: "Mojo Active",
+    link: "https://mojoactive.com",
+    timeRange: "2022-Present",
+    description:
+      "As a web developer at Mojo Active I am responsible for creating, updating and maintaining websites for clients. This includes designing and developing new features, fixing bugs, and optimizing for performance and scalability. I hope to also introduce new technologies and best practices to the company.",
+  },
+  {
+    title: "Web Developer",
+    company: "Online Stores",
+    link: "https://onlinestores.com",
+    timeRange: "2019 - 2021",
+    description:
+      "As a web developer at Online Stores, I was first tasked with migrating and converting their 8 Magento sites to Big Commerce. Along with our very small team of partners we were able to complete the task in just a little under one year. After the successful migration I continued to maintain the sites and add new features.",
+  },
+  {
+    title: "Store Manager/Business Owner",
+    company: "Multiple Locations",
+    timeRange: "1997 - 2019",
+    description:
+      "Before launching my career as a web developer I spent 25 years fueling commerce. I worked, and ran stores, for such companies as Barnes & Noble, GameStop, Pac-Sun, and Advance Auto Parts. I eventually started my own business and promptly realized that 25+ years was enough, and it was time to finally start pursuing web development as a career.",
+  },
+];
+---
+
+<section
+  aria-labelledby=":rr:"
+  class="mx-auto max-w-5xl sm:px-6 sm:border-l sm:border-primary-700/40"
+>
+  <div class="grid grid-cols-1 gap-y-8 items-baseline md:grid-cols-4">
+    <h2
+      id=":rr:"
+      class="text-lg font-semibold tracking-tight sm:text-xl text-primary-100"
+    >
+      Experience
+    </h2>
+    <div class="md:col-span-3">
+      <ul role="list" class="space-y-16">
+        {
+          jobs.map((j) => (
+            <li class="flex flex-col items-start">
+              <div class="flex flex-row justify-between items-baseline pl-2 w-full border-l border-primary-700">
+                <div class="flex flex-col">
+                  <div class="flex flex-row gap-2 items-center">
+                    {j.link && (
+                      <a
+                        href={j.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <h3 class="text-base font-semibold tracking-tight sm:max-w-none sm:text-lg max-w-[20ch] text-primary-100">
+                          {j.company}
+                        </h3>
+                      </a>
+                    )}
+                    {!j.link && (
+                      <h3 class="text-base font-semibold tracking-tight sm:max-w-none sm:text-lg max-w-[20ch] text-primary-100">
+                        {j.company}
+                      </h3>
+                    )}
+                  </div>
+
+                  <h2 class="text-sm tracking-tight sm:max-w-none sm:text-base max-w-[20ch] text-primary-300">
+                    {j.title}
+                  </h2>
+                </div>
+                <time class="text-sm text-primary-600">{j.timeRange}</time>
+              </div>
+
+              <p class="z-10 mt-4 text-sm text-primary-300 max-w-[75ch]">
+                {j.description}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
