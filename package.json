@@ -13,6 +13,7 @@
     "format": "rustywind --write . && pnpm prettier --plugin-search-dir=. --write ."
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^6.1.1",
     "@astrojs/mdx": "^0.16.0",
     "@astrojs/prefetch": "^0.1.2",
     "@astrojs/rss": "^2.1.0",

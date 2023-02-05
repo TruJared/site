@@ -16,9 +16,14 @@ import robotsTxt from "astro-robots-txt";
 import sitemap from "astro-sitemap";
 
 // https://astro.build/config
+import cloudflare from "@astrojs/cloudflare";
+
+// https://astro.build/config
 export default defineConfig({
   site: "https://jaredmakes.com",
   integrations: [tailwind(), prefetch({
     throttle: 3
-  }), mdx(), robotsTxt(), sitemap()]
+  }), mdx(), robotsTxt(), sitemap()],
+  output: "server",
+  adapter: cloudflare()
 });
