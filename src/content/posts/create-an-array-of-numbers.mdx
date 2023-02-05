@@ -1,0 +1,20 @@
+---
+
+title: "Create An Array Of Numbers"
+pubDate: 2019-03-19
+description: "3 one-liners to create an array of numbers."
+tags: ["javascript"]
+---
+
+# Create An Array Of Numbers
+
+## Ancient article now, but at one time, this was the razors edge of javascript
+
+3 one-liners to create an array of numbers.
+
+```javascript
+[...Array(100).keys()]; // ​​​​​[ 0, 1, …99 ]​​​​​
+// or
+Array.from({length: 100}, (v, i) => i); // ​​​​​[ 0, 1, …99 ]​​​​​
+// or
+[…Array(100)].map((v, i) => i + 1); // ​​​​​[ 1, 2, …100 ]​​​​​
