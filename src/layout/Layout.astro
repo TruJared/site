@@ -4,7 +4,7 @@ import "@fontsource/inter";
 import "@fontsource/jetbrains-mono";
 import { SEO } from "astro-seo";
 
-const { pageTitle, description, type } = Astro.props;
+const { pageTitle, description, type, image } = Astro.props;
 ---
 
 <html lang="en" class="h-full antialiased">
@@ -20,10 +20,10 @@ const { pageTitle, description, type } = Astro.props;
         basic: {
           title: description,
           type: type,
-          image: "/images/about.png",
+          image: image || "/images/og_image.png",
         },
         image: {
-          alt: "Jared Truscott",
+          alt: "logo for jaredmakes.com",
         },
       }}
 

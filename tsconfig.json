@@ -7,6 +7,7 @@
       "@layout/*": ["src/layout/*"],
       "@components/*": ["src/components/*"],
       "@images/*": ["public/images/*"]
-    }
+    },
+    "strictNullChecks": true
   }
 }

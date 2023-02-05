@@ -1,5 +1,5 @@
 ---
-layout: ../../layout/MarkdownLayout.astro
+
 title: My markdown capabilities
 description: "This is everything I know about markdown"
 pubDate: 2022-07-15
@@ -12,15 +12,15 @@ This cheatsheet is specifically _Markdown Here's_ version of Github-flavored Mar
 
 ##### Table of Contents
 
-[Headers](#headers)  
-[Emphasis](#emphasis)  
-[Lists](#lists)  
-[Links](#links)  
-[Images](#images)  
-[Code and Syntax Highlighting](#code-and-syntax-highlighting)  
-[Blockquotes](#blockquotes)  
-[Inline HTML](#inline-html)  
-[Horizontal Rule](#horizontal-rule)  
+[Headers](#headers)
+[Emphasis](#emphasis)
+[Lists](#lists)
+[Links](#links)
+[Images](#images)
+[Code and Syntax Highlighting](#code-and-syntax-highlighting)
+[Blockquotes](#blockquotes)
+[Inline HTML](#inline-html)
+[Horizontal Rule](#horizontal-rule)
 [Line Breaks](#line-breaks)
 
 ## Headers
@@ -338,5 +338,5 @@ this line will be a _single line_.
 
 But this one is separated by two newlines and so will be a _separate paragraph_.
 
-This line has two spaces at the end (hard for you to see, but trust me!).  
+This line has two spaces at the end (hard for you to see, but trust me!).
 So this is a separate line in the _same paragraph_.

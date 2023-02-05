@@ -1,5 +1,5 @@
 ---
-layout: ../../layout/MarkdownLayout.astro
+
 title: "Introducing DataScape: Data analysis tool"
 description: "A data visualization and analysis tool that allows users to easily explore and understand large datasets."
 pubDate: 2022-12-12

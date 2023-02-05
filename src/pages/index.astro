@@ -1,23 +1,24 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "@layout/Layout.astro";
-
 import FeaturedBlogsContainer from "@components/FeaturedBlogsContainer.astro";
 import FeaturedBlogPost from "@components/FeaturedBlogPost.astro";
 import MainIntro from "@components/MainIntro.astro";
 import ContactForm from "@components/ContactForm.astro";
 import readingTime from "reading-time";
 
-const allPosts = await Astro.glob("./blog/*.md");
+const allPosts = await getCollection("posts");
 
 const lastThreePosts = allPosts
   .sort((a, b) => {
-    let dateA = new Date(a.frontmatter.pubDate),
-      dateB = new Date(b.frontmatter.pubDate);
+    let dateA = new Date(a.data.pubDate),
+      dateB = new Date(b.data.pubDate);
     if (dateA < dateB) return 1;
     if (dateA > dateB) return -1;
     return 0;
   })
   .slice(0, 3);
+
 ---
 
 <Layout
@@ -31,17 +32,18 @@ const lastThreePosts = allPosts
       {
         lastThreePosts.map((p) => (
           <FeaturedBlogPost
-            date={new Date(p.frontmatter.pubDate).toLocaleDateString("en-US", {
+            date={new Date(p.data.pubDate).toLocaleDateString("en-US", {
               month: "long",
               day: "numeric",
               year: "numeric",
             })}
-            readTime={readingTime(p.rawContent()).text}
-            title={p.frontmatter.title}
-            description={p.frontmatter.description}
-            tags={p.frontmatter.tags}
-            url={p.url}
+            readTime={readingTime(p.body).text}
+            title={p.data.title}
+            description={p.data.description}
+            tags={p.data.tags}
+            url={"/posts/" + p.slug}
           />
+
         ))
       }
     </FeaturedBlogsContainer>

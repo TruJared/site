@@ -1,5 +1,5 @@
 ---
-layout: ../../layout/MarkdownLayout.astro
+
 title: "My Smarthome"
 pubDate: 2022-07-01
 description: "A journey on securing my smarthome."
