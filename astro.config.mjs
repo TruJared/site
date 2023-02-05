@@ -16,7 +16,7 @@ import robotsTxt from "astro-robots-txt";
 import sitemap from "astro-sitemap";
 
 // https://astro.build/config
-import cloudflare from "@astrojs/cloudflare";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,5 +25,5 @@ export default defineConfig({
     throttle: 3
   }), mdx(), robotsTxt(), sitemap()],
   output: "server",
-  adapter: cloudflare()
+  adapter: vercel()
 });

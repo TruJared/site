@@ -13,12 +13,12 @@
     "format": "rustywind --write . && pnpm prettier --plugin-search-dir=. --write ."
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^6.1.1",
     "@astrojs/mdx": "^0.16.0",
     "@astrojs/prefetch": "^0.1.2",
     "@astrojs/rss": "^2.1.0",
     "@astrojs/sitemap": "^1.0.1",
     "@astrojs/tailwind": "^3.0.1",
+    "@astrojs/vercel": "^3.0.1",
     "@fontsource/inter": "^4.5.14",
     "@fontsource/jetbrains-mono": "^4.5.11",
     "@tailwindcss/line-clamp": "^0.4.2",
