@@ -5,7 +5,6 @@ export default () => {
   const [state, handleSubmit] = useForm("xwkjlpbv");
   if (state.succeeded) {
 
-    setTimeout(() => { window.location = '/' }, 1500);
     return <p>Thanks for your message. I'll respond to you soon!</p>;
   }
 
