@@ -15,13 +15,13 @@ import robotsTxt from "astro-robots-txt";
 // https://astro.build/config
 import sitemap from "astro-sitemap";
 
-
+// https://astro.build/config
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://jaredmakes.com",
   integrations: [tailwind(), prefetch({
     throttle: 3
-  }), mdx(), robotsTxt(), sitemap()],
-
+  }), mdx(), robotsTxt(), sitemap(), react()]
 });

@@ -4,7 +4,7 @@ import Layout from "@layout/Layout.astro";
 import FeaturedBlogsContainer from "@components/FeaturedBlogsContainer.astro";
 import FeaturedBlogPost from "@components/FeaturedBlogPost.astro";
 import MainIntro from "@components/MainIntro.astro";
-import ContactForm from "@components/ContactForm.astro";
+import ContactForm from "@components/ContactForm.jsx";
 import readingTime from "reading-time";
 
 const allPosts = await getCollection("posts");
@@ -47,6 +47,7 @@ const lastThreePosts = allPosts
         ))
       }
     </FeaturedBlogsContainer>
-    <!-- <ContactForm /> -->
+    <ContactForm client:load/>
+
   </main>
 </Layout>
