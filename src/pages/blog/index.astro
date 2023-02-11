@@ -6,10 +6,9 @@ import Layout from "@layout/Layout.astro";
 import readingTime from "reading-time";
 import BlogPost from "@components/BlogPost.astro";
 
-let allPosts = await getCollection("posts");
+let allPosts = await getCollection("posts").then();
 // sort by date
-allPosts = allPosts.sort((a, b) => {
-if (!a.data.pubDate || !b.data.pubDate) return 0;
+allPosts = allPosts.filter(a => a.data.pubDate).sort((a, b) => {
   let dateA = new Date(a.data.pubDate),
     dateB = new Date(b.data.pubDate);
   if (dateA < dateB) return 1;

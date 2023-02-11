@@ -1,0 +1,88 @@
+---
+interface Images {
+  name: string;
+  width: number;
+  height?: number;
+  alt?: string;
+  caption?: string;
+}
+
+interface Props {
+  images: Images[];
+}
+
+import { Cloudinary } from "@cloudinary/url-gen";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+
+const { images } = Astro.props;
+// cloudinary instance
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: "jared-truscott",
+  },
+});
+
+// get the images
+const imagesObj = images.map((image) => {
+  const { name, width, alt = null, height = null, caption = null } = image;
+  const img = cld.image("minis/" + name);
+  const src = img
+    .resize(
+      fill()
+        .width(width)
+        .height(height || width)
+    )
+    .format("webp")
+    .toURL();
+
+  return {
+    name,
+    src,
+    width,
+    height: height || width,
+    alt,
+    caption,
+  };
+});
+---
+
+<ul role="list" class="grid gap-x-4 gap-y-8 grid-cols-fill-16">
+  {
+    imagesObj.map((i) => (
+      <a class="transition-all group" href={i.src} target="_blank">
+<li class="relative w-full rounded-2xl  transition-all duration-200 ease-in-out hover:scale-105 h-[300px] shadow-black">
+          <img
+            decoding="async"
+            loading="lazy"
+            class="object-cover absolute inset-0 z-10 w-full max-w-full h-full max-h-full rounded-2xl aspect-[1/1]"
+
+            src={i.src}
+            alt={i.alt || "picture of a mini"}
+          />
+          <div class="flex relative z-20 flex-col gap-2 justify-end p-4 w-full h-full">
+            <div class="inset-0 w-full h-full rounded-2xl" />
+
+
+
+          </div>
+        </li>
+      </a>
+    ))
+  }
+</ul>
+
+<style>
+  .progressive-blur {
+    position: absolute;
+    z-index: -1;
+
+    backdrop-filter: blur(8px);
+    mask: linear-gradient(to bottom, transparent 0%, black 100%);
+  }
+  .text-shadow-desc {
+    text-shadow: 1px 1px 4px black;
+  }
+  .text-shadow-name {
+    text-shadow: 0px 1px 2px black;
+  }
+</style>

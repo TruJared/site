@@ -1,0 +1,65 @@
+---
+import Layout from "@layout/Layout.astro";
+import Grid from "@components/Grid.astro";
+const images = [
+  { name: "sick-r", width: 300 },
+  { name: "shark-f", width: 300 },
+  { name: "terror-f", width: 300 },
+  { name: "synth-f", width: 300 },
+  { name: "chris-f", width: 300 },
+  { name: "man-f", width: 300 },
+];
+---
+
+<Layout
+  pageTitle="Minis"
+  description="A collection of minis I've painted over the past year(s)."
+  type="content"
+>
+  <main class="px-8 pt-16 mx-auto max-w-6xl sm:pt-24 lg:px-16">
+    <div class="flex flex-col mt-4 space-y-8">
+      <div class="flex flex-col space-y-4">
+        <h1
+          class="text-4xl font-bold tracking-tighter sm:text-5xl max-w-[25ch] mb-5 op-target"
+        >
+          Jared Painted These
+        </h1>
+        <div class="flex flex-row-reverse items-start pb-5 op-target sm:items-center">
+          <p class="text-primary-300 -mt-5 ml-5 mr-5 md:mr-52">A collection of minis (primarily 25mm - 35mm). I've been painting for about 1 year now, but I've only recently started to take photos of my work. I'm still learning, but I'm having a
+          blast doing it.</p>
+          <img
+            decoding="async"
+            loading="lazy"
+            class="rounded-2xl inset-0  w-half max-w-half h-auto aspect-[1/1.35]"
+            src="https://res.cloudinary.com/jared-truscott/image/upload/c_fill,w_100/v1676034231/minis/man-size.jpg"
+            alt="25mm figurine beside lib balm for scale"
+          />
+        </div>
+
+        <Grid images={images} />
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+setTimeout(() => {
+ const targets = document.querySelectorAll('.op-target');
+  targets.forEach((target) => {
+    target.classList.add('opacity-10');
+  });
+
+}, 3000);
+
+</script>
+
+<style>
+.op-target {
+transition: opacity 3s ease-in-out;
+}
+.op-target:hover {
+transition: opacity 1.5s ease-in-out;
+opacity: 1;
+
+}
+</style>
