@@ -14,8 +14,8 @@ const { projects } = Astro.props;
 <ul role="list" class="grid gap-x-4 gap-y-8 grid-cols-fill-16">
   {
     projects.map((p: Project) => (
-      <a class="transition-all group" href={p.link} target="_blank">
         <li class="relative w-full rounded-2xl shadow-md transition-all duration-200 ease-in-out hover:scale-105 h-[300px] shadow-black">
+      <a class="transition-all group" href={p.link} target="_blank">
           <img
             decoding="async"
             loading="lazy"
@@ -57,8 +57,8 @@ const { projects } = Astro.props;
               </p>
             </div>
           </div>
-        </li>
       </a>
+        </li>
     ))
   }
 </ul>

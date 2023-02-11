@@ -49,24 +49,20 @@ const imagesObj = images.map((image) => {
 <ul role="list" class="grid gap-x-4 gap-y-8 grid-cols-fill-16">
   {
     imagesObj.map((i) => (
-      <a class="transition-all group" href={i.src} target="_blank">
-<li class="relative w-full rounded-2xl  transition-all duration-200 ease-in-out hover:scale-105 h-[300px] shadow-black">
+      <li class="relative w-full rounded-2xl  transition-all duration-200 ease-in-out hover:scale-105 h-[300px] shadow-black">
+        <a class="transition-all group" href={i.src} target="_blank">
           <img
             decoding="async"
             loading="lazy"
             class="object-cover absolute inset-0 z-10 w-full max-w-full h-full max-h-full rounded-2xl aspect-[1/1]"
-
             src={i.src}
             alt={i.alt || "picture of a mini"}
           />
           <div class="flex relative z-20 flex-col gap-2 justify-end p-4 w-full h-full">
             <div class="inset-0 w-full h-full rounded-2xl" />
-
-
-
           </div>
-        </li>
-      </a>
+        </a>
+      </li>
     ))
   }
 </ul>
