@@ -19,9 +19,22 @@ import sitemap from "astro-sitemap";
 import react from "@astrojs/react";
 
 // https://astro.build/config
+import image from "@astrojs/image";
+
+// https://astro.build/config
 export default defineConfig({
   site: "https://jaredmakes.com",
-  integrations: [tailwind(), prefetch({
-    throttle: 3
-  }), mdx(), robotsTxt(), sitemap(), react()]
+  integrations: [
+    tailwind(),
+    prefetch({
+      throttle: 3,
+    }),
+    mdx(),
+    robotsTxt(),
+    sitemap(),
+    react(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+  ],
 });

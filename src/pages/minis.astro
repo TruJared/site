@@ -1,14 +1,8 @@
 ---
 import Layout from "@layout/Layout.astro";
 import Grid from "@components/Grid.astro";
-const images = [
-  { name: "sick-r", width: 300 },
-  { name: "shark-f", width: 300 },
-  { name: "terror-f", width: 300 },
-  { name: "synth-f", width: 300 },
-  { name: "chris-f", width: 300 },
-  { name: "man-f", width: 300 },
-];
+import {Image} from '@astrojs/image/components';
+import images from './../../public/helpers/miniData.js';
 ---
 
 <Layout
@@ -25,14 +19,14 @@ const images = [
           Jared Painted These
         </h1>
         <div class="flex flex-row-reverse items-start pb-5 op-target sm:items-center">
-          <p class="text-primary-300 -mt-5 ml-5 mr-5 md:mr-52">A collection of minis (primarily 25mm - 35mm). I've been painting for about 1 year now, but I've only recently started to take photos of my work. I'm still learning, but I'm having a
-          blast doing it.</p>
-          <img
-            decoding="async"
-            loading="lazy"
-            class="rounded-2xl inset-0  w-half max-w-half h-auto]"
-            src="https://res.cloudinary.com/jared-truscott/image/upload/c_fill,w_100/v1676034231/minis/man-size.jpg"
-            alt="25mm figurine beside lib balm for scale"
+          <p class="text-primary-300 -mt-5 ml-5 mr-5 md:mr-52">A collection of minis I've painted (primarily ~28mm, about the size of a Jolly Rancher). I've been painting for about 1 year now, but I've only recently started to take photos of my work. I'm still learning, but certainly enjoy it!</p>
+          <Image
+            class="rounded-2xl inset-0 w-half max-w-half h-auto"
+            format="webp"
+            width={150}
+            height={150}
+            src="images/candyForScale.jpg"
+            alt="28mm figurine beside jolly rancher for scale"
           />
         </div>
 
@@ -41,25 +35,3 @@ const images = [
     </div>
   </main>
 </Layout>
-
-<script>
-setTimeout(() => {
- const targets = document.querySelectorAll('.op-target');
-  targets.forEach((target) => {
-    target.classList.add('opacity-10');
-  });
-
-}, 3000);
-
-</script>
-
-<style>
-.op-target {
-transition: opacity 3s ease-in-out;
-}
-.op-target:hover {
-transition: opacity 1.5s ease-in-out;
-opacity: 1;
-
-}
-</style>

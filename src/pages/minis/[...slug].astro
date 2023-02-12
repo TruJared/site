@@ -1,0 +1,75 @@
+---
+import Layout from "@layout/Layout.astro";
+import { Image } from "@astrojs/image/components";
+import images from "../../../public/helpers/miniData.js";
+
+// register dynamic routes
+export async function getStaticPaths() {
+  return images.map((image) => ({
+    params: { slug: image.slug || image.name },
+    props: { image },
+  }));
+}
+
+const { image } = Astro.props;
+const imageShortName = image.name.split("-")[0];
+const imageNames = [
+  imageShortName + "-f",
+  imageShortName + "-r",
+  imageShortName + "-l",
+  imageShortName + "-b",
+];
+---
+
+<Layout
+  pageTitle="Projects"
+  description="A collection of projects I've worked on over the years."
+  type="content"
+>
+  <main class="px-8 pt-16 mx-auto max-w-6xl sm:pt-24 lg:px-16">
+    <div class="flex flex-col mt-4 space-y-8">
+      <div class="flex flex-col space-y-4">
+        <h1
+          class="text-4xl font-bold tracking-tighter sm:text-5xl max-w-[25ch]"
+        >
+          {image.title}
+        </h1>
+          <a href="/minis" class="text-right mr-2"><small class="">Go Back To Minis</small></a>
+          </div>
+        <ul role="list" class="grid gap-x-6 gap-y-6 md:grid-cols-2">
+          {
+            imageNames.map((i) => (
+              <li class="relative w-full rounded-2xl transition-all duration-200 ease-in-out hover:scale-105 h-[500px] shadow-black">
+                <a
+                  class="transition-all group"
+                  href={
+                    "https://res.cloudinary.com/jared-truscott/image/upload/v1676034232/minis/" +
+                    i +
+                    ".jpg"
+                  }
+                >
+                  <Image
+                    class="object-cover absolute inset-0 z-10 w-full max-w-full h-full max-h-full rounded-2xl aspect-[1/1]"
+                    loading="lazy"
+                    width={500}
+                    height={500}
+                    format="webp"
+                    src={
+                      "https://res.cloudinary.com/jared-truscott/image/upload/v1676034232/minis/" +
+                      i +
+                      ".jpg"
+                    }
+                    alt={image.title}
+                  />
+                  <div class="flex relative z-20 flex-col gap-2 justify-end p-4 w-full h-full">
+                    <div class="inset-0 w-full h-full rounded-2xl" />
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </main>
+</Layout>

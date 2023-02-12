@@ -2,6 +2,8 @@
 interface Images {
   name: string;
   width: number;
+  title: string;
+  slug?: string;
   height?: number;
   alt?: string;
   caption?: string;
@@ -24,7 +26,8 @@ const cld = new Cloudinary({
 
 // get the images
 const imagesObj = images.map((image) => {
-  const { name, width, alt = null, height = null, caption = null } = image;
+  const { name, width, title, alt = null , height = null, caption = null } = image;
+  const slug = image.slug;
   const img = cld.image("minis/" + name);
   const src = img
     .resize(
@@ -40,8 +43,9 @@ const imagesObj = images.map((image) => {
     src,
     width,
     height: height || width,
-    alt,
+    alt: alt || title,
     caption,
+    slug
   };
 });
 ---
@@ -50,7 +54,7 @@ const imagesObj = images.map((image) => {
   {
     imagesObj.map((i) => (
       <li class="relative w-full rounded-2xl  transition-all duration-200 ease-in-out hover:scale-105 h-[300px] shadow-black">
-        <a class="transition-all group" href={i.src} target="_blank">
+        <a class="transition-all group" href={'minis/' + i.slug}>
           <img
             decoding="async"
             loading="lazy"
